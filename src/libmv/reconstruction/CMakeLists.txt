@@ -19,6 +19,8 @@ TARGET_LINK_LIBRARIES(reconstruction camera multiview numeric V3D colamd ldl glo
 
 # make the name of debug libraries end in _d.
 SET_TARGET_PROPERTIES(reconstruction PROPERTIES DEBUG_POSTFIX "_d")
+# define LIBMV_SHOULD_EXPORT constant to export functions into DLL
+SET_TARGET_PROPERTIES(multiview PROPERTIES DEFINE_SYMBOL "LIBMV_SHOULD_EXPORT") 
 
 # installation rules for the library
 LIBMV_INSTALL_LIB(reconstruction)

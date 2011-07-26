@@ -50,9 +50,9 @@ namespace libmv {
 * "An efficient solution to the five-point relative pose problem",
 * by D. Nist\'er, IEEE PAMI, vol. 26
 */
-void TwoViewTriangulationByPlanes(const Vec3 &x1, const Vec3 &x2,
+void LIBMV_EXPORTS TwoViewTriangulationByPlanes(const Vec3 &x1, const Vec3 &x2,
                                   const Mat34 &P,const Mat3 &E, Vec4 *X);
-void TwoViewTriangulationByPlanes(const Vec2 &x1, const Vec2 &x2,
+void LIBMV_EXPORTS TwoViewTriangulationByPlanes(const Vec2 &x1, const Vec2 &x2,
                                   const Mat34 &P,const Mat3 &E, Vec3 *X);
 
 /**
@@ -70,10 +70,10 @@ void TwoViewTriangulationByPlanes(const Vec2 &x1, const Vec2 &x2,
 * \param E  The essential matrix between the two cameras
 * \param X  The 3D homogeneous point
 */
-void TwoViewTriangulationIdeal(const Vec3 &x1, const Vec3 &x2,
+void LIBMV_EXPORTS TwoViewTriangulationIdeal(const Vec3 &x1, const Vec3 &x2,
                                 const Mat34 &P, const Mat3 &E,
                                 Vec4 *X);
-void TwoViewTriangulationIdeal(const Vec2 &x1, const Vec2 &x2,
+void LIBMV_EXPORTS TwoViewTriangulationIdeal(const Vec2 &x1, const Vec2 &x2,
                                 const Mat34 &P, const Mat3 &E,
                                 Vec3 *X);
 

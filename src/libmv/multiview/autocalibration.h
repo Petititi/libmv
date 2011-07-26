@@ -32,7 +32,7 @@
 
 namespace libmv {
 
-void K_From_AbsoluteConic(const Mat3 &W, Mat3 *K);
+void LIBMV_EXPORTS K_From_AbsoluteConic(const Mat3 &W, Mat3 *K);
 
 /** \brief Compute a metric reconstruction from a projective one by computing
  *         the dual absolute quadric using linear constraints.
@@ -43,7 +43,7 @@ void K_From_AbsoluteConic(const Mat3 &W, Mat3 *K);
  *     J. Tops, R. Koch, "Visual modeling with a hand-held camera",
  *     International Journal of Computer Vision 59(3), 207-232, 2004.
  */
-class AutoCalibrationLinear {
+class LIBMV_EXPORTS AutoCalibrationLinear {
  public:
   /** \brief Add a projection to be used for autocalibration.
    *

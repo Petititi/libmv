@@ -17,9 +17,9 @@ details.
 You should have received a copy of the GNU Lesser General Public License along
 with SSBA. If not, see <http://www.gnu.org/licenses/>.
 */
-
 #ifndef V3D_OPTIMIZATION_H
 #define V3D_OPTIMIZATION_H
+
 
 #include "Math/v3d_linear.h"
 #include "Math/v3d_mathutilities.h"

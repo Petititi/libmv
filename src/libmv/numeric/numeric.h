@@ -33,6 +33,21 @@
 #include <Eigen/QR>
 #include <Eigen/SVD>
 
+//should not be here as it's not related to numeric but this has to be
+//included by every header files...
+#if (defined WIN32 || defined _WIN32 || defined WINCE) 
+#if defined LIBMV_SHOULD_EXPORT 
+#define LIBMV_EXPORTS __declspec(dllexport) 
+#else 
+#define LIBMV_EXPORTS __declspec(dllimport) 
+#endif 
+#else 
+#define LIBMV_EXPORTS 
+#endif
+#if _MSC_VER >= 1200
+#pragma warning( disable: 4127 4251 4521)
+#endif
+
 #if _WIN32 || __APPLE__
   void static sincos (double x, double *sinx, double *cosx) {
     *sinx = sin(x);
@@ -245,18 +260,18 @@ inline T Square(T x) {
   return x * x;
 }
 
-Mat3 RotationAroundX(double angle);
-Mat3 RotationAroundY(double angle);
-Mat3 RotationAroundZ(double angle);
+Mat3 LIBMV_EXPORTS RotationAroundX(double angle);
+Mat3 LIBMV_EXPORTS RotationAroundY(double angle);
+Mat3 LIBMV_EXPORTS RotationAroundZ(double angle);
 
 // Returns the rotation matrix of a rotation of angle |axis| around axis.
 // This is computed using the Rodrigues formula, see:
 //  http://mathworld.wolfram.com/RodriguesRotationFormula.html
-Mat3 RotationRodrigues(const Vec3 &axis);
+Mat3 LIBMV_EXPORTS RotationRodrigues(const Vec3 &axis);
 
 // Make a rotation matrix such that center becomes the direction of the
 // positive z-axis, and y is oriented close to up.
-Mat3 LookAt(Vec3 center);
+Mat3 LIBMV_EXPORTS LookAt(Vec3 center);
 
 // Return a diagonal matrix from a vector containg the diagonal values.
 template <typename TVec>
@@ -278,9 +293,9 @@ inline Vec3 CrossProduct(const Vec3 &x, const Vec3 &y) {
   return x.cross(y);
 }
 
-Mat3 CrossProductMatrix(const Vec3 &x);
+Mat3 LIBMV_EXPORTS CrossProductMatrix(const Vec3 &x);
 
-void MeanAndVarianceAlongRows(const Mat &A,
+void LIBMV_EXPORTS MeanAndVarianceAlongRows(const Mat &A,
                               Vec *mean_pointer,
                               Vec *variance_pointer);
 
@@ -404,7 +419,7 @@ void MeanAndVarianceAlongRows(const Mat &A,
 
 
 
-void HorizontalStack(const Mat &left, const Mat &right, Mat *stacked);
+void LIBMV_EXPORTS HorizontalStack(const Mat &left, const Mat &right, Mat *stacked);
 
 template<typename TTop, typename TBot, typename TStacked>
 void VerticalStack(const TTop &top, const TBot &bottom, TStacked *stacked) {

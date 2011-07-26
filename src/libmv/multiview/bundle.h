@@ -53,7 +53,7 @@ enum eLibmvBundleType
  * All the points are assumed to be observed in all images.
  * We use the convention x = Ks * (Rs * X + ts).
  */
-void EuclideanBAFull(const vector<Mat2X> &x,
+void LIBMV_EXPORTS EuclideanBAFull(const vector<Mat2X> &x,
                      vector<Mat3> *Ks,
                      vector<Mat3> *Rs,
                      vector<Vec3> *ts,
@@ -81,7 +81,7 @@ void EuclideanBAFull(const vector<Mat2X> &x,
  * All the points are assumed to be observed in all images.
  * We use the convention x = Ks * (Rs * X + ts).
  */
-double EuclideanBA(const vector<Mat2X> &x,
+double LIBMV_EXPORTS EuclideanBA(const vector<Mat2X> &x,
                    const vector<Vecu> &x_ids,
                    vector<Mat3> *Ks,
                    vector<Mat3> *Rs,

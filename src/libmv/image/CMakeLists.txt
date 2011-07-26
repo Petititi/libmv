@@ -24,6 +24,8 @@ TARGET_LINK_LIBRARIES(image png jpeg glog gflags ${PTHREAD})
 
 # make the name of debug libraries end in _d.
 SET_TARGET_PROPERTIES(image PROPERTIES DEBUG_POSTFIX "_d")
+# define LIBM_SHOULD_EXPORT constant to export functions into DLL
+SET_TARGET_PROPERTIES(image PROPERTIES DEFINE_SYMBOL "LIBM_SHOULD_EXPORT") 
 
 # installation rules for the library
 LIBMV_INSTALL_LIB(image)

@@ -14,8 +14,9 @@ IF(CMAKE_COMPILER_IS_GNUCXX)
   #  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused -Wno-type-limits -Wno-empty-body")
 ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 
+
 IF (WIN32)
-  ADD_LIBRARY(glog
+  ADD_LIBRARY(glog ${LIB_TYPE}
               logging.cc
               windows/port.cc
               raw_logging.cc
@@ -38,6 +39,8 @@ MACRO (GLOG_TEST NAME)
   SET_TARGET_PROPERTIES(${NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${LIBMV_TESTS_OUTPUT_DIR})
   ADD_TEST(${NAME} ${LIBMV_TESTS_OUTPUT_DIR}/${NAME})
 ENDMACRO (GLOG_TEST)
+# define SHOULD_EXPORT constant to export functions into DLL
+SET_TARGET_PROPERTIES(glog PROPERTIES DEFINE_SYMBOL "glog_SHOULD_EXPORT") 
 
 IF (NOT WIN32)
 #GLOG_TEST(demangle_unittest)

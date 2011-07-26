@@ -46,7 +46,7 @@ namespace libmv {
  * \note Need at least 3 non aligned points 
  * \note Points coordinates must be normalized (euclidean)
  */
-bool Affine2DFromCorrespondencesLinear(const Mat &x1,
+bool LIBMV_EXPORTS Affine2DFromCorrespondencesLinear(const Mat &x1,
                                        const Mat &x2,
                                        Mat3 *M,
                                        double expected_precision = 
@@ -74,7 +74,7 @@ bool Affine2DFromCorrespondencesLinear(const Mat &x1,
  * \note Need at least 4 non coplanar points 
  * \note Points coordinates must be normalized (euclidean)
  */
-bool Affine3DFromCorrespondencesLinear(const Mat &x1,
+bool LIBMV_EXPORTS Affine3DFromCorrespondencesLinear(const Mat &x1,
                                        const Mat &x2,
                                        Mat4 *M,
                                        double expected_precision = 

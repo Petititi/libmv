@@ -39,6 +39,7 @@
 #include "libmv/image/image_drawing.h"
 #include "libmv/image/image_io.h"
 #include "libmv/tools/tool.h"
+#include "libmv/logging/logging.h"
 
 using namespace libmv;
 using namespace std;

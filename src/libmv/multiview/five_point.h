@@ -42,7 +42,7 @@ namespace libmv {
  * \param x2  Corresponding points in the second image, one per column.
  * \param Es  A list of at most 10 candidate essential matrix solutions.
  */
-void FivePointsRelativePose(const Mat2X &x1, const Mat2X &x2,
+void LIBMV_EXPORTS FivePointsRelativePose(const Mat2X &x1, const Mat2X &x2,
                             vector<Mat3> *Es);
   
 } // namespace libmv

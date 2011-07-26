@@ -42,54 +42,54 @@
 /* === int version ========================================================== */
 /* ========================================================================== */
 
-void ldl_symbolic (int n, int Ap [ ], int Ai [ ], int Lp [ ],
+void LDL_EXPORTS ldl_symbolic (int n, int Ap [ ], int Ai [ ], int Lp [ ],
     int Parent [ ], int Lnz [ ], int Flag [ ], int P [ ], int Pinv [ ]) ;
 
-int ldl_numeric (int n, int Ap [ ], int Ai [ ], double Ax [ ],
+int LDL_EXPORTS ldl_numeric (int n, int Ap [ ], int Ai [ ], double Ax [ ],
     int Lp [ ], int Parent [ ], int Lnz [ ], int Li [ ], double Lx [ ],
     double D [ ], double Y [ ], int Pattern [ ], int Flag [ ],
     int P [ ], int Pinv [ ]) ;
 
-void ldl_lsolve (int n, double X [ ], int Lp [ ], int Li [ ],
+void LDL_EXPORTS ldl_lsolve (int n, double X [ ], int Lp [ ], int Li [ ],
     double Lx [ ]) ;
 
-void ldl_dsolve (int n, double X [ ], double D [ ]) ;
+void LDL_EXPORTS ldl_dsolve (int n, double X [ ], double D [ ]) ;
 
-void ldl_ltsolve (int n, double X [ ], int Lp [ ], int Li [ ],
+void LDL_EXPORTS ldl_ltsolve (int n, double X [ ], int Lp [ ], int Li [ ],
     double Lx [ ]) ;
 
-void ldl_perm  (int n, double X [ ], double B [ ], int P [ ]) ;
-void ldl_permt (int n, double X [ ], double B [ ], int P [ ]) ;
+void LDL_EXPORTS ldl_perm  (int n, double X [ ], double B [ ], int P [ ]) ;
+void LDL_EXPORTS ldl_permt (int n, double X [ ], double B [ ], int P [ ]) ;
 
-int ldl_valid_perm (int n, int P [ ], int Flag [ ]) ;
-int ldl_valid_matrix ( int n, int Ap [ ], int Ai [ ]) ;
+int LDL_EXPORTS ldl_valid_perm (int n, int P [ ], int Flag [ ]) ;
+int LDL_EXPORTS ldl_valid_matrix ( int n, int Ap [ ], int Ai [ ]) ;
 
 /* ========================================================================== */
 /* === long version ========================================================= */
 /* ========================================================================== */
 
-void ldl_l_symbolic (UF_long n, UF_long Ap [ ], UF_long Ai [ ], UF_long Lp [ ],
+void LDL_EXPORTS ldl_l_symbolic (UF_long n, UF_long Ap [ ], UF_long Ai [ ], UF_long Lp [ ],
     UF_long Parent [ ], UF_long Lnz [ ], UF_long Flag [ ], UF_long P [ ],
     UF_long Pinv [ ]) ;
 
-UF_long ldl_l_numeric (UF_long n, UF_long Ap [ ], UF_long Ai [ ], double Ax [ ],
+UF_long LDL_EXPORTS ldl_l_numeric (UF_long n, UF_long Ap [ ], UF_long Ai [ ], double Ax [ ],
     UF_long Lp [ ], UF_long Parent [ ], UF_long Lnz [ ], UF_long Li [ ],
     double Lx [ ], double D [ ], double Y [ ], UF_long Pattern [ ],
     UF_long Flag [ ], UF_long P [ ], UF_long Pinv [ ]) ;
 
-void ldl_l_lsolve (UF_long n, double X [ ], UF_long Lp [ ], UF_long Li [ ],
+void LDL_EXPORTS ldl_l_lsolve (UF_long n, double X [ ], UF_long Lp [ ], UF_long Li [ ],
     double Lx [ ]) ;
 
-void ldl_l_dsolve (UF_long n, double X [ ], double D [ ]) ;
+void LDL_EXPORTS ldl_l_dsolve (UF_long n, double X [ ], double D [ ]) ;
 
-void ldl_l_ltsolve (UF_long n, double X [ ], UF_long Lp [ ], UF_long Li [ ],
+void LDL_EXPORTS ldl_l_ltsolve (UF_long n, double X [ ], UF_long Lp [ ], UF_long Li [ ],
     double Lx [ ]) ;
 
-void ldl_l_perm  (UF_long n, double X [ ], double B [ ], UF_long P [ ]) ;
-void ldl_l_permt (UF_long n, double X [ ], double B [ ], UF_long P [ ]) ;
+void LDL_EXPORTS ldl_l_perm  (UF_long n, double X [ ], double B [ ], UF_long P [ ]) ;
+void LDL_EXPORTS ldl_l_permt (UF_long n, double X [ ], double B [ ], UF_long P [ ]) ;
 
-UF_long ldl_l_valid_perm (UF_long n, UF_long P [ ], UF_long Flag [ ]) ;
-UF_long ldl_l_valid_matrix ( UF_long n, UF_long Ap [ ], UF_long Ai [ ]) ;
+UF_long LDL_EXPORTS ldl_l_valid_perm (UF_long n, UF_long P [ ], UF_long Flag [ ]) ;
+UF_long LDL_EXPORTS ldl_l_valid_matrix ( UF_long n, UF_long Ap [ ], UF_long Ai [ ]) ;
 
 /* ========================================================================== */
 /* === LDL version ========================================================== */

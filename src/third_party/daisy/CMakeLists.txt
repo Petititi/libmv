@@ -26,6 +26,6 @@ set(daisy_srcs
     src/interaction.cpp
 )
 
-add_library(daisy ${daisy_srcs} ${daisy_hdrs})
+add_library(daisy STATIC ${daisy_srcs} ${daisy_hdrs})
 
 LIBMV_INSTALL_THIRD_PARTY_LIB(daisy)

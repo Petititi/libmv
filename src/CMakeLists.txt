@@ -107,6 +107,16 @@ IF (UNIX)
     third_party/zlib)
 ENDIF (UNIX)
 
+# Allow the developer to select if Dynamic or Static libraries are built
+OPTION (BUILD_STATIC_LIBS "Build Static Libraries" ON)
+# Set the LIB_TYPE variable to SHARED
+SET (LIB_TYPE SHARED)
+IF (BUILD_STATIC_LIBS)
+  # User wants to build Static Libraries, so change the LIB_TYPE variable to CMake keyword 'STATIC'
+  SET (LIB_TYPE STATIC)
+ENDIF (BUILD_STATIC_LIBS)
+
+
 INCLUDE(Documentation)
 INCLUDE(Installation)
 INCLUDE(Testing)

@@ -43,7 +43,7 @@ enum ResectionMethod {
  * \param t         Solution for the camera translation vector
  * \param method    The resection method to use.
  */
-void EuclideanResection(const Mat2X &x_camera, 
+void LIBMV_EXPORTS EuclideanResection(const Mat2X &x_camera, 
                         const Mat3X &X_world,
                         Mat3 *R, Vec3 *t,
                         ResectionMethod method = RESECTION_EPNP);
@@ -61,7 +61,7 @@ void EuclideanResection(const Mat2X &x_camera,
  * \param t         Solution for the camera translation vector
  * \param method    Resection method
  */
-void EuclideanResection(const Mat &x_image, 
+void LIBMV_EXPORTS EuclideanResection(const Mat &x_image, 
                         const Mat3X &X_world,
                         const Mat3 &K,
                         Mat3 *R, Vec3 *t,
@@ -77,7 +77,7 @@ void EuclideanResection(const Mat &x_image,
  * Horn, Hilden, "Closed-form solution of absolute orientation using
  * orthonormal matrices"
  */
-void AbsoluteOrientation(const Mat3X &X,
+void LIBMV_EXPORTS AbsoluteOrientation(const Mat3X &X,
                          const Mat3X &Xp,
                          Mat3 *R,
                          Vec3 *t);
@@ -95,7 +95,7 @@ void AbsoluteOrientation(const Mat3X &X,
  * This is the algorithm described in: "Linear Pose Estimation from Points or
  * Lines", by Ansar, A. and Daniilidis, PAMI 2003. vol. 25, no. 5.
  */
-void EuclideanResectionAnsarDaniilidis(const Mat2X &x_camera, 
+void LIBMV_EXPORTS EuclideanResectionAnsarDaniilidis(const Mat2X &x_camera, 
                                        const Mat3X &X_world,
                                        Mat3 *R, Vec3 *t);
 /**
@@ -113,7 +113,7 @@ void EuclideanResectionAnsarDaniilidis(const Mat2X &x_camera,
  * and F. Moreno-Noguer and P. Fua, IJCV 2009. vol. 81, no. 2
  * \note: the non-linear optimization is not implemented here.
  */
-void EuclideanResectionEPnP(const Mat2X &x_camera,
+void LIBMV_EXPORTS EuclideanResectionEPnP(const Mat2X &x_camera,
                             const Mat3X &X_world, 
                             Mat3 *R, Vec3 *t);
 

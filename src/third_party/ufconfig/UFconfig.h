@@ -37,6 +37,22 @@
 #ifndef _UFCONFIG_H
 #define _UFCONFIG_H
 
+//should not be here as it's not related to ldl but this has to be
+//included by every header files...
+#if (defined WIN32 || defined _WIN32 || defined WINCE) 
+#if defined ldl_SHOULD_EXPORT 
+#define LDL_EXPORTS __declspec(dllexport) 
+#else 
+#define LDL_EXPORTS __declspec(dllimport) 
+#endif 
+#else 
+#define LDL_EXPORTS 
+#endif
+#if _MSC_VER >= 1200
+#pragma warning( disable: 4127 4251 4521)
+#endif
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif

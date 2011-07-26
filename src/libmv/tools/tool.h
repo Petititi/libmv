@@ -28,12 +28,17 @@
 #include <string>
 
 #include "third_party/gflags/gflags.h"
-#include "third_party/glog/src/glog/logging.h"
+//#include "third_party/glog/src/glog/logging.h"
 
 namespace libmv {
 
-inline void Init(const char *usage, int *argc, char ***argv) {
-  google::InitGoogleLogging((*argv)[0]);
+  inline void Init(const char *usage, int *argc, char ***argv) {
+    std::ofstream out("my_log.txt");
+    if ( out )
+      std::clog.rdbuf(out.rdbuf());
+    else
+      std::cerr << "Error while opening the file" << endl;
+  //google::InitGoogleLogging((*argv)[0]);
   google::SetUsageMessage(std::string(usage));
   google::ParseCommandLineFlags(argc, argv, true);
 }

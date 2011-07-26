@@ -21,7 +21,21 @@
 #ifndef LIBMV_LOGGING_LOGGING_H
 #define LIBMV_LOGGING_LOGGING_H
 
+#include <iostream>
+#if (defined WIN32 || defined _WIN32 || defined WINCE)
+#define LOG(INFO) std::clog<<(INFO)
+#define VLOG(INFO) LOG(INFO)
+#define INFO "INFO"
+#define FATAL "FATAL"
+#define ERROR "ERROR"
+#define WARNING "WARNING"
+#define NUM_SEVERITIES "WARNING"
+#define CHECK(exp) assert(exp);std::clog
+#define CHECK_EQ(e1, e2) CHECK((e1) == (e2));std::clog
+#define CHECK_GE(e1, e2) CHECK((e1) >= (e2));std::clog
+#else
 #include "third_party/glog/src/glog/logging.h"
+#endif //(defined WIN32 || defined _WIN32 || defined WINCE) 
 
 #define LG LOG(INFO)
 #define V0 LOG(INFO)

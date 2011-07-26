@@ -17,7 +17,8 @@ IF(CMAKE_COMPILER_IS_GNUCXX)
   SET(CMAKE_CXX_FLAGS "")
 ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 
-add_library(V3D
+#V3D can't be dynamic!
+add_library(V3D STATIC
     Math/v3d_linear.h
     Math/v3d_mathutilities.h
     Math/v3d_optimization.h

@@ -27,29 +27,29 @@
 
 namespace libmv {
 
-void ProjectionsFromFundamental(const Mat3 &F, Mat34 *P1, Mat34 *P2);
-void FundamentalFromProjections(const Mat34 &P1, const Mat34 &P2, Mat3 *F);
+void LIBMV_EXPORTS ProjectionsFromFundamental(const Mat3 &F, Mat34 *P1, Mat34 *P2);
+void LIBMV_EXPORTS FundamentalFromProjections(const Mat34 &P1, const Mat34 &P2, Mat3 *F);
 
 /**
  * 7 points (minimal case, points coordinates must be normalized before):
  */
-double FundamentalFrom7CorrespondencesLinear(const Mat &x1,
+double LIBMV_EXPORTS FundamentalFrom7CorrespondencesLinear(const Mat &x1,
                                              const Mat &x2,
                                              std::vector<Mat3> *F);
 
 /**
  * 7 points (points coordinates must be in image space):
  */
-double FundamentalFromCorrespondences7Point(const Mat &x1,
+double LIBMV_EXPORTS FundamentalFromCorrespondences7Point(const Mat &x1,
                                             const Mat &x2,
                                             std::vector<Mat3> *F);
 
 /**
  * Fundamental matrix utility function:
  */
-void EnforceFundamentalRank2Constraint(Mat3 *F);
+void LIBMV_EXPORTS EnforceFundamentalRank2Constraint(Mat3 *F);
 
-void NormalizeFundamental(const Mat3 &F, Mat3 *F_normalized);
+void LIBMV_EXPORTS NormalizeFundamental(const Mat3 &F, Mat3 *F_normalized);
 
 /**
  * Approximate squared reprojection errror.
@@ -57,14 +57,14 @@ void NormalizeFundamental(const Mat3 &F, Mat3 *F_normalized);
  * See page 287 of HZ equation 11.9. This avoids triangulating the point,
  * relying only on the entries in F.
  */
-double SampsonDistance(const Mat &F, const Vec2 &x1, const Vec2 &x2);
+double LIBMV_EXPORTS SampsonDistance(const Mat &F, const Vec2 &x1, const Vec2 &x2);
 
 /**
  * Calculates the sum of the distances from the points to the epipolar lines.
  *
  * See page 288 of HZ equation 11.10.
  */
-double SymmetricEpipolarDistance(const Mat &F, const Vec2 &x1, const Vec2 &x2);
+double LIBMV_EXPORTS SymmetricEpipolarDistance(const Mat &F, const Vec2 &x1, const Vec2 &x2);
 
 /**
  * Compute the relative camera motion between two cameras.
@@ -74,30 +74,30 @@ double SymmetricEpipolarDistance(const Mat &F, const Vec2 &x1, const Vec2 &x2);
  * If T1 and T2 are the camera motions, the computed relative motion is
  *   T = T2 T1^{-1}
  */
-void RelativeCameraMotion(const Mat3 &R1,
+void LIBMV_EXPORTS RelativeCameraMotion(const Mat3 &R1,
                           const Vec3 &t1,
                           const Mat3 &R2,
                           const Vec3 &t2,
                           Mat3 *R,
                           Vec3 *t);
 
-void EssentialFromFundamental(const Mat3 &F,
+void LIBMV_EXPORTS EssentialFromFundamental(const Mat3 &F,
                               const Mat3 &K1,
                               const Mat3 &K2,
                               Mat3 *E);
 
-void FundamentalFromEssential(const Mat3 &E,
+void LIBMV_EXPORTS FundamentalFromEssential(const Mat3 &E,
                               const Mat3 &K1,
                               const Mat3 &K2,
                               Mat3 *F);
 
-void EssentialFromRt(const Mat3 &R1,
+void LIBMV_EXPORTS EssentialFromRt(const Mat3 &R1,
                      const Vec3 &t1,
                      const Mat3 &R2,
                      const Vec3 &t2,
                      Mat3 *E);
 
-void MotionFromEssential(const Mat3 &E,
+void LIBMV_EXPORTS MotionFromEssential(const Mat3 &E,
                          std::vector<Mat3> *Rs,
                          std::vector<Vec3> *ts);
 
@@ -110,14 +110,14 @@ void MotionFromEssential(const Mat3 &E,
  *
  * \return index of the right solution or -1 if no solution.
  */
-int MotionFromEssentialChooseSolution(const std::vector<Mat3> &Rs,
+int LIBMV_EXPORTS MotionFromEssentialChooseSolution(const std::vector<Mat3> &Rs,
                                       const std::vector<Vec3> &ts,
                                       const Mat3 &K1,
                                       const Vec2 &x1,
                                       const Mat3 &K2,
                                       const Vec2 &x2);
 
-bool MotionFromEssentialAndCorrespondence(const Mat3 &E,
+bool LIBMV_EXPORTS MotionFromEssentialAndCorrespondence(const Mat3 &E,
                                           const Mat3 &K1,
                                           const Vec2 &x1,
                                           const Mat3 &K2,

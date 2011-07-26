@@ -34,12 +34,14 @@ SET(MULTIVIEW_SRC projection.cc
 # define the header files (make the headers appear in IDEs.)
 FILE(GLOB MULTIVIEW_HDRS *.h)
 
-ADD_LIBRARY(multiview ${MULTIVIEW_SRC} ${MULTIVIEW_HDRS})
+ADD_LIBRARY(multiview ${LIB_TYPE} ${MULTIVIEW_SRC} ${MULTIVIEW_HDRS})
 
 TARGET_LINK_LIBRARIES(multiview numeric V3D colamd ldl)
 
 # make the name of debug libraries end in _d.
 SET_TARGET_PROPERTIES(multiview PROPERTIES DEBUG_POSTFIX "_d")
+# define LIBM_SHOULD_EXPORT constant to export functions into DLL
+SET_TARGET_PROPERTIES(multiview PROPERTIES DEFINE_SYMBOL "LIBMV_SHOULD_EXPORT") 
 
 # installation rules for the library
 LIBMV_INSTALL_LIB(multiview)

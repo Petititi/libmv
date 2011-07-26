@@ -14,10 +14,12 @@ SET(CORRESPONDENCE_SRC klt.cc
 # define the header files (make the headers appear in IDEs.)
 FILE(GLOB CORRESPONDENCE_HDRS *.h)
 
-ADD_LIBRARY(correspondence ${CORRESPONDENCE_SRC} ${CORRESPONDENCE_HDRS})
+ADD_LIBRARY(correspondence ${LIB_TYPE} ${CORRESPONDENCE_SRC} ${CORRESPONDENCE_HDRS})
 
 # make the name of debug libraries end in _d.
 SET_TARGET_PROPERTIES(correspondence PROPERTIES DEBUG_POSTFIX "_d")
+# define LIBM_SHOULD_EXPORT constant to export functions into DLL
+SET_TARGET_PROPERTIES(correspondence PROPERTIES DEFINE_SYMBOL "LIBMV_SHOULD_EXPORT") 
 
 # installation rules for the library
 LIBMV_INSTALL_LIB(correspondence)

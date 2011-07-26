@@ -9,12 +9,14 @@ SET(DETECTOR_SRC fast_detector.cc
 # define the header files (make the headers appear in IDEs.)
 FILE(GLOB DETECTOR_HDRS *.h)
 
-ADD_LIBRARY(detector ${DETECTOR_SRC} ${DETECTOR_HDRS})
+ADD_LIBRARY(detector ${LIB_TYPE} ${DETECTOR_SRC} ${DETECTOR_HDRS})
 
 TARGET_LINK_LIBRARIES(detector)
 
 # make the name of debug libraries end in _d.
 SET_TARGET_PROPERTIES(detector PROPERTIES DEBUG_POSTFIX "_d")
+# define LIBMV_SHOULD_EXPORT constant to export functions into DLL
+SET_TARGET_PROPERTIES(detector PROPERTIES DEFINE_SYMBOL "LIBMV_SHOULD_EXPORT") 
 
 LIBMV_INSTALL_LIB(detector)
 LIBMV_TEST(fast_detector "detector;image;correspondence;fast")

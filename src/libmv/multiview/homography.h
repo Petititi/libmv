@@ -47,7 +47,7 @@ namespace libmv {
  * \return True if the transformation estimation has succeeded.
  * \note There must be at least 4 non-colinear points.
  */
-bool Homography2DFromCorrespondencesLinear(const Mat &x1,
+bool LIBMV_EXPORTS Homography2DFromCorrespondencesLinear(const Mat &x1,
                                            const Mat &x2,
                                            Mat3 *H,
                                            double expected_precision = 
@@ -74,7 +74,7 @@ bool Homography2DFromCorrespondencesLinear(const Mat &x1,
  * \note Need at least 5 non coplanar points 
  * \note Points coordinates must be in homogeneous coordinates
  */
-bool Homography3DFromCorrespondencesLinear(const Mat &x1,
+bool LIBMV_EXPORTS Homography3DFromCorrespondencesLinear(const Mat &x1,
                                            const Mat &x2,
                                            Mat4 *H,
                                            double expected_precision = 
