@@ -48,6 +48,22 @@
 #ifndef COLAMD_H
 #define COLAMD_H
 
+//should not be here as it's not related to ldl but this has to be
+//included by every header files...
+#if (defined WIN32 || defined _WIN32 || defined WINCE) 
+#if defined colamd_SHOULD_EXPORT 
+#define COMOLAD_EXPORTS __declspec(dllexport) 
+#else 
+#define COMOLAD_EXPORTS __declspec(dllimport) 
+#endif 
+#else 
+#define COMOLAD_EXPORTS 
+#endif
+#if _MSC_VER >= 1200
+#pragma warning( disable: 4127 4251 4521)
+#endif
+
+
 /* make it easy for C++ programs to include COLAMD */
 #ifdef __cplusplus
 extern "C" {
@@ -142,7 +158,7 @@ extern "C" {
 /* define UF_long */
 #include "UFconfig.h"
 
-size_t colamd_recommended	/* returns recommended value of Alen, */
+size_t COMOLAD_EXPORTS colamd_recommended	/* returns recommended value of Alen, */
 				/* or 0 if input arguments are erroneous */
 (
     int nnz,			/* nonzeros in A */
@@ -150,7 +166,7 @@ size_t colamd_recommended	/* returns recommended value of Alen, */
     int n_col			/* number of columns in A */
 ) ;
 
-size_t colamd_l_recommended	/* returns recommended value of Alen, */
+size_t COMOLAD_EXPORTS colamd_l_recommended	/* returns recommended value of Alen, */
 				/* or 0 if input arguments are erroneous */
 (
     UF_long nnz,		/* nonzeros in A */
@@ -158,17 +174,17 @@ size_t colamd_l_recommended	/* returns recommended value of Alen, */
     UF_long n_col		/* number of columns in A */
 ) ;
 
-void colamd_set_defaults	/* sets default parameters */
+void COMOLAD_EXPORTS colamd_set_defaults	/* sets default parameters */
 (				/* knobs argument is modified on output */
     double knobs [COLAMD_KNOBS]	/* parameter settings for colamd */
 ) ;
 
-void colamd_l_set_defaults	/* sets default parameters */
+void COMOLAD_EXPORTS colamd_l_set_defaults	/* sets default parameters */
 (				/* knobs argument is modified on output */
     double knobs [COLAMD_KNOBS]	/* parameter settings for colamd */
 ) ;
 
-int colamd			/* returns (1) if successful, (0) otherwise*/
+int COMOLAD_EXPORTS colamd			/* returns (1) if successful, (0) otherwise*/
 (				/* A and p arguments are modified on output */
     int n_row,			/* number of rows in A */
     int n_col,			/* number of columns in A */
@@ -179,7 +195,7 @@ int colamd			/* returns (1) if successful, (0) otherwise*/
     int stats [COLAMD_STATS]	/* colamd output statistics and error codes */
 ) ;
 
-UF_long colamd_l		/* returns (1) if successful, (0) otherwise*/
+UF_long COMOLAD_EXPORTS colamd_l		/* returns (1) if successful, (0) otherwise*/
 (				/* A and p arguments are modified on output */
     UF_long n_row,		/* number of rows in A */
     UF_long n_col,		/* number of columns in A */
@@ -190,7 +206,7 @@ UF_long colamd_l		/* returns (1) if successful, (0) otherwise*/
     UF_long stats [COLAMD_STATS]/* colamd output statistics and error codes */
 ) ;
 
-int symamd				/* return (1) if OK, (0) otherwise */
+int COMOLAD_EXPORTS symamd				/* return (1) if OK, (0) otherwise */
 (
     int n,				/* number of rows and columns of A */
     int A [],				/* row indices of A */
@@ -206,7 +222,7 @@ int symamd				/* return (1) if OK, (0) otherwise */
     					/* mxFree (for MATLAB mexFunction) */
 ) ;
 
-UF_long symamd_l			/* return (1) if OK, (0) otherwise */
+UF_long COMOLAD_EXPORTS symamd_l			/* return (1) if OK, (0) otherwise */
 (
     UF_long n,				/* number of rows and columns of A */
     UF_long A [],			/* row indices of A */
@@ -222,22 +238,22 @@ UF_long symamd_l			/* return (1) if OK, (0) otherwise */
     					/* mxFree (for MATLAB mexFunction) */
 ) ;
 
-void colamd_report
+void COMOLAD_EXPORTS colamd_report
 (
     int stats [COLAMD_STATS]
 ) ;
 
-void colamd_l_report
+void COMOLAD_EXPORTS colamd_l_report
 (
     UF_long stats [COLAMD_STATS]
 ) ;
 
-void symamd_report
+void COMOLAD_EXPORTS symamd_report
 (
     int stats [COLAMD_STATS]
 ) ;
 
-void symamd_l_report
+void COMOLAD_EXPORTS symamd_l_report
 (
     UF_long stats [COLAMD_STATS]
 ) ;

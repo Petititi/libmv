@@ -29,7 +29,7 @@ namespace libmv {
 // Estimate robustly the fundamental matrix between two dataset of 2D point
 // (image coords space). The fundamental solver relies on the 8 point solution.
 // Returns the score associated to the solution F
-double FundamentalFromCorrespondences8PointRobust(
+double LIBMV_EXPORTS FundamentalFromCorrespondences8PointRobust(
     const Mat &x1,
     const Mat &x2,
     double max_error,
@@ -40,7 +40,7 @@ double FundamentalFromCorrespondences8PointRobust(
 // Estimate robustly the fundamental matrix between two dataset of 2D point
 // (image coords space). The fundamental solver relies on the 7 point solution.
 // Returns the score associated to the solution F
-double FundamentalFromCorrespondences7PointRobust(
+double LIBMV_EXPORTS FundamentalFromCorrespondences7PointRobust(
     const Mat &x1,
     const Mat &x2,
     double max_error,

@@ -21,9 +21,9 @@
 #ifndef LIBMV_LOGGING_LOGGING_H
 #define LIBMV_LOGGING_LOGGING_H
 
-#include <iostream>
 #if (defined WIN32 || defined _WIN32 || defined WINCE)
-#define LOG(INFO) std::clog<<(INFO)
+#include <iostream>
+#define LOG(INFO) std::clog<<std::endl<<(INFO)
 #define VLOG(INFO) LOG(INFO)
 #define INFO "INFO"
 #define FATAL "FATAL"
