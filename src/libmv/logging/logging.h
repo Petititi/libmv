@@ -31,8 +31,10 @@
 #define WARNING "WARNING"
 #define NUM_SEVERITIES "WARNING"
 #define CHECK(exp) assert(exp);std::clog
-#define CHECK_EQ(e1, e2) CHECK((e1) == (e2));std::clog
-#define CHECK_GE(e1, e2) CHECK((e1) >= (e2));std::clog
+#define CHECK_EQ(e1, e2) CHECK((e1) == (e2))
+#define CHECK_GE(e1, e2) CHECK((e1) >= (e2))
+#define DCHECK_EQ(e1, e2) CHECK_EQ(e1, e2)
+#define DCHECK_GE(e1, e2) CHECK_GE(e1, e2)
 #else
 #include "third_party/glog/src/glog/logging.h"
 #endif //(defined WIN32 || defined _WIN32 || defined WINCE) 

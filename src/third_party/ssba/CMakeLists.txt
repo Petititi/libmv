@@ -26,6 +26,7 @@ add_library(V3D STATIC
     Geometry/v3d_cameramatrix.h
     Geometry/v3d_metricbundle.h
     Geometry/v3d_metricbundle.cpp)
+target_link_libraries(V3D ldl colamd)
 
 add_subdirectory(Apps)
 

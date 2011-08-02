@@ -36,7 +36,7 @@ FILE(GLOB MULTIVIEW_HDRS *.h)
 
 ADD_LIBRARY(multiview ${LIB_TYPE} ${MULTIVIEW_SRC} ${MULTIVIEW_HDRS})
 
-TARGET_LINK_LIBRARIES(multiview numeric V3D colamd ldl)
+TARGET_LINK_LIBRARIES(multiview glog numeric V3D colamd ldl )
 
 # make the name of debug libraries end in _d.
 SET_TARGET_PROPERTIES(multiview PROPERTIES DEBUG_POSTFIX "_d")
@@ -47,10 +47,10 @@ SET_TARGET_PROPERTIES(multiview PROPERTIES DEFINE_SYMBOL "LIBMV_SHOULD_EXPORT")
 LIBMV_INSTALL_LIB(multiview)
 
 IF (BUILD_TESTS)
-ADD_LIBRARY(multiview_test_data
-            test_data_sets.cc)
-# make the name of debug libraries end in _d.
-SET_TARGET_PROPERTIES(multiview_test_data PROPERTIES DEBUG_POSTFIX "_d")
+  ADD_LIBRARY(multiview_test_data test_data_sets.cc)
+  TARGET_LINK_LIBRARIES(multiview_test_data multiview)
+  # make the name of debug libraries end in _d.
+  SET_TARGET_PROPERTIES(multiview_test_data PROPERTIES DEBUG_POSTFIX "_d")
 ENDIF (BUILD_TESTS)
 
 MACRO (MULTIVIEW_TEST NAME)
@@ -98,6 +98,3 @@ MULTIVIEW_TEST(euclidean_kernel)
 MULTIVIEW_TEST(euclidean_parameterization)
 MULTIVIEW_TEST(robust_euclidean)
 MULTIVIEW_TEST(rotation_parameterization)
-
-# TODO(keir): Make tests that depend on generated.cc to use generated sources.
-#ADD_GENERATED_SOURCE(generated.cc generator.py)

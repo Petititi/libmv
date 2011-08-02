@@ -27,9 +27,9 @@ ENDIF (COMMAND cmake_policy)
 
 PROJECT(LIBMV C CXX)
 
-ENABLE_TESTING()
+#ENABLE_TESTING()
 
-SET(CMAKE_MODULE_PATH  
+SET(CMAKE_MODULE_PATH
   "${LIBMV_SOURCE_DIR}/CMake"
   "${LIBMV_SOURCE_DIR}/CMake/modules")
 
@@ -67,7 +67,7 @@ IF(MSVC)
 ENDIF(MSVC)
 
 # To build shared libs
-# OPTION(BUILD_SHARED_LIBS "Build dynamic shared libraries (.dll/.so)." OFF)
+OPTION(BUILD_SHARED_LIBS "Build dynamic shared libraries (.dll/.so)." ON)
 
 INCLUDE(ConfigureBuild)
 
@@ -101,14 +101,7 @@ IF (APPLE)
   )
 ENDIF (APPLE)
 
-IF (UNIX)
-  INCLUDE_DIRECTORIES(
-    third_party/png
-    third_party/zlib)
-ENDIF (UNIX)
 
-# Allow the developer to select if Dynamic or Static libraries are built
-OPTION (BUILD_STATIC_LIBS "Build Static Libraries" ON)
 # Set the LIB_TYPE variable to SHARED
 SET (LIB_TYPE SHARED)
 IF (BUILD_STATIC_LIBS)
@@ -128,18 +121,13 @@ IF (BUILD_TESTS)
   ADD_SUBDIRECTORY(testing)
 ENDIF (BUILD_TESTS)
 
-IF (QT4_FOUND)
-  OPTION(BUILD_GUI "Build the GUI executables." ON)
-  IF (BUILD_GUI)
-    MESSAGE(STATUS "Qt4 found: GUI enabled.")
-    ADD_SUBDIRECTORY(ui)
-  ENDIF (BUILD_GUI)
-ELSE (QT4_FOUND)
-  MESSAGE(STATUS "Qt4 not found: GUI disabled.")
-  MESSAGE(STATUS "If you have installed Qt4, check that qmake.exe is accessible from your PATH.")
-ENDIF (QT4_FOUND)
+OPTION(BUILD_GUI "Build Qt Tracker" ON)
+IF (BUILD_GUI)
+ MESSAGE(STATUS "GUI enabled. You need to install Qt SDK to build Qt Tracker")
+ ADD_SUBDIRECTORY(ui)
+ENDIF (BUILD_GUI)
 
-OPTION(BUILD_TOOLS "Build the command line tools." ON)
+OPTION(BUILD_TOOLS "Build the command line tools." OFF)
 IF (BUILD_TOOLS)
   ADD_SUBDIRECTORY(tools)
 ENDIF (BUILD_TOOLS)

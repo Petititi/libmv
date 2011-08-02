@@ -70,10 +70,10 @@ void FundamentalFromProjections(const Mat34 &P1, const Mat34 &P2, Mat3 *F) {
 // HZ 11.1 pag.279 (x1 = x, x2 = x')
 // http://www.cs.unc.edu/~marc/tutorial/node54.html
 double EightPointSolver(const Mat &x1, const Mat &x2, Mat3 *F) {
-  CHECK_EQ(x1.rows(), 2);
-  CHECK_GE(x1.cols(), 8);
-  CHECK_EQ(x1.rows(), x2.rows());
-  CHECK_EQ(x1.cols(), x2.cols());
+  DCHECK_EQ(x1.rows(), 2);
+  DCHECK_GE(x1.cols(), 8);
+  DCHECK_EQ(x1.rows(), x2.rows());
+  DCHECK_EQ(x1.cols(), x2.cols());
 
   int n = x1.cols();
   Mat A(n, 9);
@@ -97,7 +97,7 @@ double EightPointSolver(const Mat &x1, const Mat &x2, Mat3 *F) {
 
 // HZ 11.1.1 pag.280
 void EnforceFundamentalRank2Constraint(Mat3 *F) {
-  Eigen::JacobiSVD<Mat3> USV(*F);
+  Eigen::JacobiSVD<Mat3> USV(*F, Eigen::ComputeFullU | Eigen::ComputeFullV);
   Vec3 d = USV.singularValues();
   d(2) = 0.0;
   *F = USV.matrixU() * d.asDiagonal() * USV.matrixV().transpose();
@@ -107,10 +107,10 @@ void EnforceFundamentalRank2Constraint(Mat3 *F) {
 double NormalizedEightPointSolver(const Mat &x1,
                                   const Mat &x2,
                                   Mat3 *F) {
-  CHECK_EQ(x1.rows(), 2);
-  CHECK_GE(x1.cols(), 8);
-  CHECK_EQ(x1.rows(), x2.rows());
-  CHECK_EQ(x1.cols(), x2.cols());
+  DCHECK_EQ(x1.rows(), 2);
+  DCHECK_GE(x1.cols(), 8);
+  DCHECK_EQ(x1.rows(), x2.rows());
+  DCHECK_EQ(x1.cols(), x2.cols());
 
   // Normalize the data.
   Mat3 T1, T2;
@@ -136,10 +136,10 @@ double NormalizedEightPointSolver(const Mat &x1,
 double FundamentalFrom7CorrespondencesLinear(const Mat &x1,
                                              const Mat &x2,
                                              std::vector<Mat3> *F) {
-  CHECK_EQ(x1.rows(), 2);
-  CHECK_EQ(x1.cols(), 7);
-  CHECK_EQ(x1.rows(), x2.rows());
-  CHECK_EQ(x2.cols(), x2.cols());
+  DCHECK_EQ(x1.rows(), 2);
+  DCHECK_EQ(x1.cols(), 7);
+  DCHECK_EQ(x1.rows(), x2.rows());
+  DCHECK_EQ(x2.cols(), x2.cols());
 
   // Build a 9 x n matrix from point matches, where each row is equivalent to
   // the equation x'T*F*x = 0 for a single correspondence pair (x', x). The
@@ -202,10 +202,10 @@ double FundamentalFrom7CorrespondencesLinear(const Mat &x1,
 double FundamentalFromCorrespondences7Point(const Mat &x1,
                                             const Mat &x2,
                                             std::vector<Mat3> *F) {
-  CHECK_EQ(x1.rows(), 2);
-  CHECK_GE(x1.cols(), 7);
-  CHECK_EQ(x1.rows(), x2.rows());
-  CHECK_EQ(x1.cols(), x2.cols());
+  DCHECK_EQ(x1.rows(), 2);
+  DCHECK_GE(x1.cols(), 7);
+  DCHECK_EQ(x1.rows(), x2.rows());
+  DCHECK_EQ(x1.cols(), x2.cols());
 
   // Normalize the data.
   Mat3 T1, T2;
@@ -331,7 +331,7 @@ void MotionFromEssential(const Mat3 &E,
   (*Rs)[3] = U_Wt_Vt;
 
   ts->resize(4);
-  (*ts)[0] = U.col(2);
+  (*ts)[0] =  U.col(2);
   (*ts)[1] = -U.col(2);
   (*ts)[2] =  U.col(2);
   (*ts)[3] = -U.col(2);
@@ -343,8 +343,8 @@ int MotionFromEssentialChooseSolution(const std::vector<Mat3> &Rs,
                                       const Vec2 &x1,
                                       const Mat3 &K2,
                                       const Vec2 &x2) {
-  CHECK_EQ(4, Rs.size());
-  CHECK_EQ(4, ts.size());
+  DCHECK_EQ(4, Rs.size());
+  DCHECK_EQ(4, ts.size());
 
   Mat34 P1, P2;
   Mat3 R1;

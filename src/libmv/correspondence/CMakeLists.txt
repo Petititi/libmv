@@ -3,7 +3,7 @@ SET(CORRESPONDENCE_SRC klt.cc
                        feature.cc 
                        matches.cc 
                        feature_matching.cc
-                       feature_matching_FLANN.cc
+#                      feature_matching_FLANN.cc
                        tracker.cc
                        robust_tracker.cc
                        planar_tracker.cc
@@ -15,6 +15,7 @@ SET(CORRESPONDENCE_SRC klt.cc
 FILE(GLOB CORRESPONDENCE_HDRS *.h)
 
 ADD_LIBRARY(correspondence ${LIB_TYPE} ${CORRESPONDENCE_SRC} ${CORRESPONDENCE_HDRS})
+TARGET_LINK_LIBRARIES(correspondence multiview image flann)
 
 # make the name of debug libraries end in _d.
 SET_TARGET_PROPERTIES(correspondence PROPERTIES DEBUG_POSTFIX "_d")

@@ -31,6 +31,13 @@ void LIBMV_EXPORTS ProjectionsFromFundamental(const Mat3 &F, Mat34 *P1, Mat34 *P
 void LIBMV_EXPORTS FundamentalFromProjections(const Mat34 &P1, const Mat34 &P2, Mat3 *F);
 
 /**
+ * The normalized 8-point fundamental matrix solver.
+ */
+double NormalizedEightPointSolver(const Mat &x1,
+                                  const Mat &x2,
+                                  Mat3 *F);
+
+/**
  * 7 points (minimal case, points coordinates must be normalized before):
  */
 double LIBMV_EXPORTS FundamentalFrom7CorrespondencesLinear(const Mat &x1,
@@ -43,6 +50,13 @@ double LIBMV_EXPORTS FundamentalFrom7CorrespondencesLinear(const Mat &x1,
 double LIBMV_EXPORTS FundamentalFromCorrespondences7Point(const Mat &x1,
                                             const Mat &x2,
                                             std::vector<Mat3> *F);
+
+/**
+ * 8 points (points coordinates must be in image space):
+ */
+double NormalizedEightPointSolver(const Mat &x1,
+                                  const Mat &x2,
+                                  Mat3 *F);
 
 /**
  * Fundamental matrix utility function:
